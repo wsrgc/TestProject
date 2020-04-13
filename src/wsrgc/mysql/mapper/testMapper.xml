@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="wsrgc.mysql.mapper.TestMapper">
+
+    <insert id="insertOptData" parameterType="java.util.HashMap">
+        insert into test_opt_data(O, E, Y, E1, E2, OE)
+        values(#{O}, #{E}, #{Y}, #{E1}, #{E2}, #{OE})
+    </insert>
+
+    <select id="selectOptData" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select * from test_opt_data
+        where O=#{O} and E = #{E} and Y = #{Y}
+    </select>
+
+    <update id="updateOptData" parameterType="java.util.HashMap">
+        update test_opt_data
+        set E1=#{E1}, E2 = #{E2}, OE = #{OE}
+        where O=#{O} and E = #{E} and Y = #{Y}
+    </update>
+
+    <insert id="insertMongoZeroData" parameterType="java.lang.String">
+        insert into mongo_zero_data(ecuId, date, time, findex, energy, power)
+        values ${_parameter}
+    </insert>
+
+    <select id="selectTest" resultType="java.util.Map" parameterType="java.lang.String">
+        select companyId,
+               trim(trailing ',' from concat(
+                case userCount
+                    when 1 then 'userCount,'
+                    else ''
+                end,
+                case level
+                    when 0 then 'level,'
+                    else ''
+                end,
+                case countryId
+                    when 1 then 'country,'
+                    else ''
+                end)) as userCount
+        from company_info
+    </select>
+
+</mapper>

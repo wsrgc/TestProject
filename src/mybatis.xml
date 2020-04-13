@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="lazyLoadingEnabled" value="true" />
+		<setting name="aggressiveLazyLoading" value="false" />
+	</settings>
+	<typeAliases>
+		<typeAlias type="wsrgc.mysql.DruidDataSourceFactory"
+			alias="DRUID" />
+	</typeAliases>
+	<environments default="test">
+<!--		<environment id="test">-->
+<!--			<transactionManager type="JDBC" />-->
+<!--			<dataSource type="DRUID">-->
+<!--				<property name="url"-->
+<!--						  value="jdbc:mysql://139.168.200.158:3306/test?autoReconnect=true" />-->
+<!--				<property name="JDBC.Driver"-->
+<!--						  value="com.mysql.jdbc.Driver" />-->
+<!--				<property name="maxActive" value="30" />-->
+<!--				<property name="initialSize" value="10" />-->
+<!--				<property name="minIdle" value="4" />-->
+<!--				<property name="username" value="root" />-->
+<!--				<property name="password" value="emaremote" />-->
+<!--				<property name="poolPreparedStatements" value="true" />-->
+<!--				<property name="removeAbandoned" value="true" />-->
+<!--				<property name="removeAbandonedTimeout" value="3600" />-->
+<!--				<property name="validationQuery" value="select 1" />-->
+<!--			</dataSource>-->
+<!--		</environment>-->
+
+		<environment id="mongoData">
+			<transactionManager type="JDBC" />
+			<dataSource type="DRUID">
+				<property name="url"
+						  value="jdbc:mysql://139.168.200.128:3306/159siemens?autoReconnect=true" />
+				<property name="JDBC.Driver"
+						  value="com.mysql.jdbc.Driver" />
+				<property name="maxActive" value="30" />
+				<property name="initialSize" value="10" />
+				<property name="minIdle" value="4" />
+				<property name="username" value="emaregread" />
+				<property name="password" value="emaread@2020" />
+				<property name="poolPreparedStatements" value="true" />
+				<property name="removeAbandoned" value="true" />
+				<property name="removeAbandonedTimeout" value="3600" />
+				<property name="validationQuery" value="select 1" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="wsrgc/mysql/mapper/testMapper.xml" />
+	</mappers>
+</configuration>
